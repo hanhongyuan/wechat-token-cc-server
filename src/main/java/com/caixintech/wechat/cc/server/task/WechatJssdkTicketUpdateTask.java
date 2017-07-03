@@ -16,7 +16,7 @@ public class WechatJssdkTicketUpdateTask {
 	@Autowired
 	private WechatServerService weixinAppServiceImpl;
 	
-	@Scheduled(cron="0 */2 * * * ?")
+	@Scheduled(cron="0 0 0/2 * * ?")
 	public void updateKey(){
 		try {
 			weixinAppServiceImpl.updateAccessTokenAndJssdkTicket();
