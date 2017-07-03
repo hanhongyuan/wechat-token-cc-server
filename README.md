@@ -16,6 +16,8 @@ server.port=8082
 weixin.app.appid=yourappid
 weixin.app.secret=yoursecret
 ```
+如果没有公众号，可从以下地址申请测试公众账号：
+[https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login](https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login)
 
 ### 启动服务
 
@@ -82,4 +84,17 @@ Vue.http.post('http://localhost:8082/wechat/sign?url=' + location.href.split('#'
   .catch(function (error) {
     console.log(error);
   });
+```
+
+### 关于安全
+
+目前仅通过限制跨域访问来限制API的调用，好多工具都能轻松搞定，有以下建议方案：
+* 将中控服务器部署在内网，通过防火墙等工具实现仅允许应用服务器访问到中控服务器。
+* 自己增加api认证的token，比如使用jwt进行认证……
+
+配置跨域访问：
+src/main/resources/application.properties
+
+```
+weixin.app.security.domains=http://wxtest.devincloud.cn,http://localhost:8080
 ```
