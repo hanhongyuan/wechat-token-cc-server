@@ -65,21 +65,21 @@ api已经允许跨域访问，可以直接到过ajax调用
 
 使用Vue的朋友可以参考：
 ```
-Vue.http.post('http://localhost:8081/wechat/sign?url=' + location.href.split('#')[0],{})
-			  .then(function (response) {
-			  	console.debug(response)
-				  	if(response.status == 200){
-				  		Vue.wechat.config({
-				        debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-				        appId: response.data.appId, // 必填，公众号的唯一标识
-				        timestamp: response.data.timestamp, // 必填，生成签名的时间戳
-				        nonceStr: response.data.nonceStr, // 必填，生成签名的随机串
-				        signature: response.data.signature,// 必填，签名，见附录1
-				        jsApiList: ['scanQRCode','chooseImage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-				    });
-			  	}
-			  })
-			  .catch(function (error) {
-			    console.log(error);
-			  });
+Vue.http.post('http://localhost:8082/wechat/sign?url=' + location.href.split('#')[0],{})
+  .then(function (response) {
+  	console.debug(response)
+	  	if(response.status == 200){
+	  		Vue.wechat.config({
+		        debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+		        appId: response.data.appId, // 必填，公众号的唯一标识
+		        timestamp: response.data.timestamp, // 必填，生成签名的时间戳
+		        nonceStr: response.data.nonceStr, // 必填，生成签名的随机串
+		        signature: response.data.signature,// 必填，签名，见附录1
+		        jsApiList: ['scanQRCode','chooseImage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+		    });
+  		}
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 ```
